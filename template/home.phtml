@@ -1,0 +1,180 @@
+				<div class="row projects">
+					<div class="col-lg-12" style>
+						<div class="hpanel hgreen collapsed">
+							<div class="panel-heading hbuilt ">
+								<div class="panel-tools">
+									<a class="showhide"><i class="fa fa-chevron-up"></i></a>
+								</div>
+								<i class="fa fa-circle text-gray" data-toggle="tooltip" data-placement="top"
+									title="Обменный пункт ещё не прошел проверку мониторингом."></i> - магазин не
+								проверен
+								<span style="display:inline-block; width: 10px;"></span>
+								<i class="fa fa-check-square text-success" data-toggle="tooltip" data-placement="top"
+									title="Обменный пункт выполнил все условия мониторинга. Не имеет негативных отзывов"></i>
+								- безопасен и проверен
+							</div>
+							<div class="panel-body">
+								<span class="label label-success pull-right">ВАЖНО</span>
+								<div class="row">
+									<div class="col-sm-12" style>
+										<!-- <h4>В списке мониторинга одна из крупнейших баз для сравнения.</h4>-->
+										<div class="row">
+											<div class="col-sm-4" style>
+												<div class="project-label" style="text-transform: uppercase;">Магазинов
+												</div>
+												<div class="row">
+													<div class="col-sm-3 text-right" style><small>239</small></div>
+													<div class="col-sm-6 text-center" style>
+														<div class="progress m-t-xs full progress-small">
+															<div style="width: 33.614627285513%" aria-valuemax="100"
+																aria-valuemin="0" aria-valuenow="33.614627285513"
+																role="progressbar"
+																class=" progress-bar progress-bar-success"></div>
+														</div>
+													</div>
+													<div class="col-sm-3" style><small>711</small></div>
+												</div>
+											</div>
+											<div class="col-sm-4" style>
+												<div class="project-label" style="text-transform: uppercase;">Магазинов</div>
+												<small>0</small>
+											</div>
+											<div class="col-sm-4" style>
+												<div class="project-label" style="text-transform: uppercase;">СТАТУСЫ
+												</div>
+												<i class="fa fa-circle text-gray" data-toggle="tooltip"
+													data-placement="top"
+													title="Магазин ещё не прошел проверку мониторингом."></i>
+												<i class="fa fa-check-square text-success" data-toggle="tooltip"
+													data-placement="top"
+													title="Магазин выполнил все условия мониторинга. Не имеет негативных отзывов"></i>
+												<i class="fa fa-exclamation-triangle text-warning" data-toggle="tooltip"
+													data-placement="top"
+													title="Магазин считается сомнительным. Имеет негативный отзыв без ответа администрации магазина"></i>
+												<i class="fa fa-ban text-danger" data-toggle="tooltip"
+													data-placement="top"
+													title="Опасный. Есть множество негативных отзывов без ответа, либо замечен в мошенничестве. Переход не рекомендуется"></i>
+												<i class="fa fa-product-hunt" aria-hidden="true" data-toggle="tooltip"
+													data-placement="top"
+													title="Магазин производит сделки в ручном или или полуавтоматическом режиме с участием оператора"></i>
+													<!-- еще надо добавить статус магазин работает в автоматическом режиме -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="hpanel">
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="panel-body" style="box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 12px 1px;">
+								<div class="post-list table-responsive" id="post-list257">
+									<div>
+										<button class="btn btn-default btn-sm" type="button" data-toggle="collapse"
+											data-target="#collapseHideEx" aria-expanded="true"
+											aria-controls="collapseHideEx" style="position: absolute;right: 10px;">
+											<i class="fa fa-cogs" aria-hidden="true"></i>
+										</button>
+										<div class="collapse out " id="collapseHideEx" aria-expanded="true" style>
+											<div class="row well">
+												<div class="col-lg-6">
+													<h5 class="font-bold">Настройка отображения</h5>
+													<div><label> <input type="checkbox" id="checknepro" checked
+																class="i-checksq"> <i
+																class="fa fa-circle text-gray"></i> Показать
+															непроверенные </label></div>
+													<div><label> <input type="checkbox" id="checkpodoz" checked
+																class="i-checksq"> <i
+																class="fa fa-exclamation-triangle text-warning"></i>
+															Показать сомнительные </label></div>
+													<div><label> <input type="checkbox" id="checkopasn"
+																class="i-checksq"> <i class="fa fa-ban text-danger"></i>
+															Показать опасные </label></div>
+												</div>
+												<div class="col-lg-6">
+													<h5 class="font-bold">Время перезагрузки курсов</h5>
+													<select class="form-control" id="timerefresh">
+														<option value="5000">5 секунд</option>
+														<option value="10000">10 секунд</option>
+														<option value="20000">20 секунд</option>
+														<option value="30000">30 секунд</option>
+														<option value="60000">60 секунд</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<table cellpadding="0" cellspacing="0" id="exchangers_plugin">
+										<input type="hidden" name="welc" id="welc" value="0">
+										<tbody>
+											<tr>
+												<td colspan="2" class="br">
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<h1 style="font-size: 22px;"> Мониторинг магазинов в чате</h1>
+												</td>
+											</tr>
+											<tr id="defaultTableRow">
+												<td colspan="2">
+													<table
+														class="exchange table table-bordered table-hover dataTable no-footer asacvdvrvrvr"
+														id="exchangesTable">
+														<tbody>
+															<tr class="titles">
+																<td class="c_t" width="5%">
+																	<div id="c_t_abs"></div>
+																</td>
+																<td width="36%" id="main_header_changer">Магазин</td>
+																<td width="23%" id="main_header_give">Город</td>
+																<td width="23%" id="main_header_get">Продукт</td>
+																<td width="13%" align="right" id="main_header_rezerv">Резерв</td>
+																<td width="10%" align="center" class="c_t_r">
+																	<div id="c_t_r_abs"></div>
+																	<div class="txt">Отзывы</div>
+																</td>
+															</tr>
+															{shop_list}
+														</tbody>
+													</table>
+													<div id="c_l_b_abs"></div>
+													<div id="c_r_b_abs"></div>
+												</td>
+											</tr>
+											<tr>
+												<td width="10%" align="center" class="c_t_r">
+													<div id="c_t_r_abs" class></div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" class="br"></td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<h4>
+														<span>Как аботает монеторинг магазинов!</span>
+													</h4>
+													<div class="block-body-em">
+														<div class="right_pad">
+															<div class="mainbodyblock"><strong>Мониторинг команд «ХХХХ»:
+																	!</strong>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<form method="post" action="/exchange/" style="margin:0" name="calcform">
+											</form>
+											<input type="hidden" name="first" value="1">
+											<input type="hidden" name="change" value="2">
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						{rightblock}
+					</div>
+				</div>

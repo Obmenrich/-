@@ -1,0 +1,1 @@
+jQuery((function(){var e=!1;try{e=isMainPage}catch(e){}e&&jQuery("table#tableView a").each((function(e,t){var a=jQuery(t);a.click((function(){return""==this.getAttribute("rel2")?(jQuery("table#tableView td.current").removeClass("current"),a.parent().addClass("current"),updateValutesLinks(a,!0),!1):jQuery.proxy(ajaxValutesChangeClick,this)()}))}))}));

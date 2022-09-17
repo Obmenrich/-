@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/datatables.min.css">
+<script src="js/datatables.min.js"></script>
+<div class="hpanel">
+	<div class="row">  
+		<div class="col-lg-8">
+			<div class="panel-body" style="box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 12px 1px;">  
+				<div class="post-list table-responsive" id="post-list286">
+				<div>
+				<br>
+					<a class="add-scammer pexc-btn" status-adc="hide">Добавить магазин</a><br><br>
+					<div id="add-scammer-block" style="display: none;"> 
+						<form id="add-scammer-form" method="POST">
+							<table cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td>Название магазина:</td>
+									<td>
+										<input type="text" name="shop_name" value="" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								<tr>
+									<td>Город:</td>
+									<td>
+										<input type="text" name="sity" value="" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								<tr>
+									<td>Продукт:</td>
+									<td>
+										<input type="text" name="product" value="" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								<tr>
+									<td>Резерв:</td>
+									<td>
+										<input type="number" name="reserve" value="0" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								<tr>
+									<td>Мин. грамм:</td>
+									<td>
+										<input type="number" name="min" value="0" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								<tr>
+									<td>Мах. грамм:</td>
+									<td>
+										<input type="number" name="max" value="0" autocomplete="off" style="margin: 5px 0 0 0;" size="16" class="newstyle">
+									</td>
+								</tr>
+								
+							</table>
+							<input type="hidden" name="add_shop" value="1">
+							<button class="pexc-btn pull-right" type="submit">Добавить</button>
+						</form>
+						<br><br>
+					</div>
+					<hr>
+					<h3 style="font-size: 17px;">Введите данные предполагаемого мошенника в поле для поиска</h3>
+					<div id="scammers-grid_wrapper" class="dataTables_wrapper no-footer">
+						<table id="scammers-grid" cellpadding="0" cellspacing="0" border="0" class="display dataTable no-footer" width="100%" role="grid" aria-describedby="scammers-grid_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>ID</th>
+									<th>Магазин</th>
+									<th>Город</th>
+									<th>Продукт</th>
+									<th>Резерв</th>
+									<th>Действие</th>
+								</tr>
+							</thead>
+							
+						</table>
+						<div class="dataTables_info" id="scammers-grid_info" role="status" aria-live="polite">Записи с 0 до 0 из 0 записей (отфильтровано из 7 записей)</div>
+						<div class="dataTables_paginate paging_simple_numbers" id="scammers-grid_paginate"><a class="paginate_button previous disabled" aria-controls="scammers-grid" data-dt-idx="0" tabindex="0" id="scammers-grid_previous">Предыдущая</a><span></span><a class="paginate_button next disabled" aria-controls="scammers-grid" data-dt-idx="1" tabindex="0" id="scammers-grid_next">Следующая</a>
+						</div>
+					</div>
+					
+				<br><br>
+				</div>
+				<script type="text/javascript">
+					var scammers_table;
+					jQuery(".add-scammer").click(function() {
+						if(jQuery('.add-scammer').attr('status-adc') == 'hide'){
+							jQuery("#add-scammer-block").slideToggle("slow");			
+							jQuery('.add-scammer').attr('status-adc', 'show');
+							jQuery('.add-scammer').html('Скрыть');
+						} else if(jQuery('.add-scammer').attr('status-adc') == 'show'){
+							jQuery("#add-scammer-block").slideToggle("slow");	
+							jQuery('.add-scammer').attr('status-adc', 'hide');			
+							jQuery('.add-scammer').html('Добавить мошенника');
+						}
+
+					});
+					jQuery("#add-scammer-form").submit(function() {
+						jQuery('#add-scammer-block #description').val();
+						
+						contacts_text = jQuery('#add-scammer-block #contacts').val();
+						description_text = jQuery('#add-scammer-block #description').val();
+						
+						if(contacts_text.length < 10 || description_text.length < 10){
+							alert('Введите корректные данные');
+							return false;
+						}
+						
+						var data = {
+							action: 'add_shop',
+							contacts: jQuery('#add-scammer-block #contacts').val(),
+							description: jQuery('#add-scammer-block #description').val(),
+						};
+
+						jQuery.post(globalAJAXURL, data, function(response) {
+							scammers_table.ajax.reload();
+							jQuery('#add-scammer-form')[0].reset();
+							jQuery("#add-scammer-block").slideToggle("slow");
+							jQuery('.add-scammer').attr('status-adc', 'hide');			
+							jQuery('.add-scammer').html('Добавить мошенника');			
+						});	
+						return false;
+					});	
+
+					
+
+					jQuery(document).ready(function() {
+						scammers_table = jQuery('#scammers-grid').DataTable( {
+							"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+							"processing": true,
+							"serverSide": true,
+							"ajax":{
+								url :globalAJAXURL,
+								type: "post", 
+								data: {action:'get_shops'},
+								error: function(){
+									jQuery(".scammers-grid-error").html("");
+									jQuery("#scammers-grid").append('<tbody class="scammers-grid-error"><tr><th colspan="5">Нет данных</th></tr></tbody>');
+									jQuery("#scammers-grid_processing").css("display","none");
+								},
+								success: function(data){  // error handling
+									jQuery(".scammers-grid-error").html("");
+									jQuery(".user_shop").remove();
+									jQuery("#scammers-grid").append(data.data);
+									jQuery("#scammers-grid_processing").css("display","none");
+								}
+							},
+							"language": {
+								"processing": "Подождите...",
+								"search": "Поиск: ",
+								"lengthMenu": "Показать _MENU_ записей",
+								"info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+								"infoEmpty": "Записи с 0 до 0 из 0 записей",
+								"infoFiltered": "(отфильтровано из _MAX_ записей)",
+								"infoPostFix": "",
+								"loadingRecords": "Загрузка записей...",
+								"zeroRecords": "Начните поиск по номеру счета, телефона, Ф.И.О., Email или другим данным",
+								"emptyTable": "В таблице отсутствуют данные",
+								"paginate": {
+									"first": "Первая",
+									"previous": "Предыдущая",
+									"next": "Следующая",
+									"last": "Последняя"
+								},
+								"aria": {
+									"sortAscending": ": активировать для сортировки столбца по возрастанию",
+									"sortDescending": ": активировать для сортировки столбца по убыванию"
+								}
+							}			
+						} );
+					} );
+
+					
+				</script>
+
+				 
+					
+				</div> 
+				 </div>
+		</div>
+		{rightblock}
+	</div>
+</div>

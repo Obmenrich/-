@@ -1,0 +1,21 @@
+<div class="hpanel">
+	<div class="panel-heading hbuilt">Личный кабинет</div>
+	<div class="panel-body no-padding">
+		<ul class="list-group">
+			<li class="list-group-item"><i class="fas fa-user-alt"></i><a href="./?p=profile">Профиль {user_name}</a></li>
+			<li class="list-group-item"><a href="./?p=base_edit"><i class="fa fa-ban"></i>База магазинов</a></li>
+			<li class="list-group-item"><a href="./logout.php" title="Выйти">Выход</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	clearInterval(PING);
+	function ping() {
+		//$.ajax( "api.php?p=ping" );
+		var data = {
+			action: 'ping',
+		};
+		jQuery.post(globalAJAXURL, data);
+	};
+	PING = setInterval(ping, 10000);
+</script>

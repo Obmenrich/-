@@ -1,0 +1,23 @@
+<tr class="user_shop user_shop_{id}">
+	<td style="text-align: center;">{id}</td>
+	<td class="mx first_body" data-stat="1" data-name="Favorite-exchanger" >
+		<i class="fa fa-lock " aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Сайт работает по защищенному протоколу https"></i>
+		<a target="top" rel="nofollow" data-stat="1" data-name="Favorite-exchanger" data-href="{link}">{shop_name}</a>
+		<div><span style="font-size: 8px; color: red; display: inline-block;">мин {min}</span> / <span style="font-size: 8px; color: red; display: inline-block;">макс {max}</span></div>
+	</td>
+	<td class="mx formatGive">
+		<span>{sity}</span>
+	</td>
+	<td class="mx formatGet ">
+		<strong>{product}</strong>
+	</td>
+	<td  align="right" class="mx ">
+		<strong>{reserve}</strong>
+	</td>
+	<td align="right">
+		<form id="add-scammer-form" method="POST">
+			<input type="hidden" name="delete_shop" value="{id}">
+			<button class="pexc-btn pull-right" type="submit">Удалить</button>
+		</form>
+	</td>
+</tr>
